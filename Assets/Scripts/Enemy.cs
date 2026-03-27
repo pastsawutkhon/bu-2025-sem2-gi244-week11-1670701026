@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public static float globalStunEndTime = 0f;
     public float speed = 3f;
     public bool isStunned = false;
     private Rigidbody rb;
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         PlayerController p = FindObjectOfType<PlayerController>();
-        ApplyGlobalStun(p.stunEndTime);
+        ApplyGlobalStun(globalStunEndTime);
     }
 
     // Update is called once per frame
@@ -29,20 +30,19 @@ public class Enemy : MonoBehaviour
         if (isStunned) return;
         Vector3 dir = player.transform.position - transform.position;
         dir.Normalize();
-        rb.AddForce(dir * speed);
+        rb.linearVelocity = dir * speed;
     }
 
     public void ApplyGlobalStun(float globalEndTime)
     {
+        globalStunEndTime = globalEndTime;
         float remaining = globalEndTime - Time.time;
-
         if (remaining <= 0) return;
 
         if (stunCountdownRoutine != null)
         {
             StopCoroutine(stunCountdownRoutine);
         }
-
         stunCountdownRoutine = StartCoroutine(StunCountdown(remaining));
     }
 

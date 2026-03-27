@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public bool hasPowerUp = false;
     private Coroutine CountDownRoutine;
-    public float stunEndTime = 0f;
-    public float stunDuration = 5f;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,7 +45,14 @@ public class PlayerController : MonoBehaviour
         }
         powerUpIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
-        
+        if(hasPowerUp)
+        {
+            powerUpIndicator.SetActive(true);
+        }
+        else
+        {
+            powerUpIndicator.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,7 +73,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PowerUp"))
         {
-            powerUpIndicator.SetActive(true);
             hasPowerUp = true;
             Destroy(other.gameObject);
 
@@ -77,28 +82,11 @@ public class PlayerController : MonoBehaviour
             }
             CountDownRoutine = StartCoroutine(PowerUpCountDown());
         }
-        
-        if (other.gameObject.CompareTag("StunPowerUp"))
-        {
-            stunEndTime = Time.time + stunDuration;
-            Enemy[] enemies = FindObjectsOfType<Enemy>();
-            foreach (Enemy e in enemies)
-            {
-                e.ApplyGlobalStun(stunEndTime);
-            }
-
-            Destroy(other.gameObject);
-        }
     }
-
-
 
     IEnumerator PowerUpCountDown()
     {
         yield return new WaitForSeconds(10);
-        powerUpIndicator.SetActive(false);
         hasPowerUp = false;
     }
-
-    
 }

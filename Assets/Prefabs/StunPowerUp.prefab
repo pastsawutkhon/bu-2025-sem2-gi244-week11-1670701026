@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3653503145983023206
+--- !u!1 &77894555618806638
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7912341858711952924}
-  - component: {fileID: 7614296913169714120}
-  - component: {fileID: 6684391871224649031}
-  - component: {fileID: 9049562327828057932}
+  - component: {fileID: 7641784018753222325}
+  - component: {fileID: 7268770077197860817}
+  - component: {fileID: 2829101570789612000}
+  - component: {fileID: 3058275176767089913}
+  - component: {fileID: 5768462330006869781}
   m_Layer: 0
   m_Name: StunPowerUp
   m_TagString: StunPowerUp
@@ -19,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7912341858711952924
+--- !u!4 &7641784018753222325
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653503145983023206}
+  m_GameObject: {fileID: 77894555618806638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.06, y: 0, z: 6.87}
@@ -34,21 +35,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7614296913169714120
+--- !u!33 &7268770077197860817
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653503145983023206}
+  m_GameObject: {fileID: 77894555618806638}
   m_Mesh: {fileID: 4300000, guid: c8e9a715daac24048a124a1f8e3487fa, type: 3}
---- !u!23 &6684391871224649031
+--- !u!23 &2829101570789612000
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653503145983023206}
+  m_GameObject: {fileID: 77894555618806638}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,13 +92,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9049562327828057932
+--- !u!65 &3058275176767089913
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653503145983023206}
+  m_GameObject: {fileID: 77894555618806638}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -112,3 +113,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.528658, y: 0.43810678, z: 0.4578313}
   m_Center: {x: 0, y: -0.000000022351742, z: 0}
+--- !u!114 &5768462330006869781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77894555618806638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb2c46b98d73fa4c81e68526b96b620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StunPowerUp
+  stunEndTime: 0
+  stunDuration: 5

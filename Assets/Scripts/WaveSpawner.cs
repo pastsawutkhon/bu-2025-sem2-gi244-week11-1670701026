@@ -18,7 +18,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform[] allSpawnPoints;
     public GameObject enemyPrefab;
-    public GameObject powerUpPrefab;
+    public GameObject[] powerUpPrefab;
 
     private int currentWave = 0;
 
@@ -125,12 +125,12 @@ public class WaveSpawner : MonoBehaviour
                 continue;
 
             // ✅ spawn
-            GameObject pu = Instantiate(powerUpPrefab, spawnPos, Quaternion.identity);
-            pu.tag = "PowerUp";
+            int puIndex = Random.Range(0, powerUpPrefab.Length);
+            GameObject pu = Instantiate(powerUpPrefab[puIndex], spawnPos, Quaternion.identity);
 
             spawned++;
 
-            Debug.Log($"✅ [PowerUp] Spawn {spawned}/{count} ที่ {point.name}");
+            Debug.Log($"✅ [PowerUp] Spawn {powerUpPrefab[puIndex].name} at {point.name}");
         }
 
         // 🔥 spawn ไม่ครบ
