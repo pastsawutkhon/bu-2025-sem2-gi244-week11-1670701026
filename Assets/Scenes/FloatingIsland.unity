@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StunPowerUp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 77894555618806638, guid: b64db4372c14b0b47b39f47a6e7b9011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7641784018753222325, guid: b64db4372c14b0b47b39f47a6e7b9011, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1128888
@@ -1172,6 +1176,10 @@ PrefabInstance:
     - target: {fileID: 77894555618806638, guid: b64db4372c14b0b47b39f47a6e7b9011, type: 3}
       propertyPath: m_Name
       value: StunPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77894555618806638, guid: b64db4372c14b0b47b39f47a6e7b9011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7641784018753222325, guid: b64db4372c14b0b47b39f47a6e7b9011, type: 3}
       propertyPath: m_LocalPosition.x

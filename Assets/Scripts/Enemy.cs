@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         if (isStunned) return;
         Vector3 dir = player.transform.position - transform.position;
         dir.Normalize();
-        rb.linearVelocity = dir * speed;
+        rb.AddForce(dir * speed);
     }
 
     public void ApplyGlobalStun(float globalEndTime)
