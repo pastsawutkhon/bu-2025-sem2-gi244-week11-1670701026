@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public Transform focalPoint;
+    public GameObject powerUpIndicator;
 
     private Rigidbody rb;
 
@@ -14,8 +15,9 @@ public class PlayerController : MonoBehaviour
     private InputAction breakAction;
 
     public bool hasPowerUp = false;
-
     private Coroutine CountDownRoutine;
+    public float stunEndTime = 0f;
+    public float stunDuration = 5f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +27,12 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         smashAction = InputSystem.actions.FindAction("Smash");
         breakAction = InputSystem.actions.FindAction("Break");
+        
+    }
+
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -36,6 +44,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = Vector3.zero;
         }
+        powerUpIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,14 +67,27 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PowerUp"))
         {
+            powerUpIndicator.SetActive(true);
             hasPowerUp = true;
             Destroy(other.gameObject);
 
-            if(CountDownRoutine != null)
+            if (CountDownRoutine != null)
             {
-                StopCoroutine(PowerUpCountDown());
+                StopCoroutine(CountDownRoutine);
             }
             CountDownRoutine = StartCoroutine(PowerUpCountDown());
+        }
+        
+        if (other.gameObject.CompareTag("StunPowerUp"))
+        {
+            stunEndTime = Time.time + stunDuration;
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            foreach (Enemy e in enemies)
+            {
+                e.ApplyGlobalStun(stunEndTime);
+            }
+
+            Destroy(other.gameObject);
         }
     }
 
@@ -72,6 +96,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator PowerUpCountDown()
     {
         yield return new WaitForSeconds(10);
+        powerUpIndicator.SetActive(false);
         hasPowerUp = false;
     }
+
+    
 }
